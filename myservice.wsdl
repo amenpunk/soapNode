@@ -1,8 +1,8 @@
 <definitions name = "HelloService"
-    targetNamespace = "http://www.examples.com/wsdl/HelloService.wsdl"
     xmlns = "http://schemas.xmlsoap.org/wsdl/"
+    targetNamespace = "http://localhost:8080/wsdl/HelloService.wsdl"
     xmlns:soap = "http://schemas.xmlsoap.org/wsdl/soap/"
-    xmlns:tns = "http://www.examples.com/wsdl/HelloService.wsdl"
+    xmlns:tns = "http://localhost:8080/wsdl/HelloService.wsdl"
     xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
 
 <message name = "SayHelloRequest">
@@ -21,8 +21,7 @@
 </portType>
 
 <binding name = "Hello_Binding" type = "tns:Hello_PortType">
-    <soap:binding style = "rpc"
-        transport = "http://schemas.xmlsoap.org/soap/http"/>
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
     <operation name = "sayHello">
         <soap:operation soapAction = "sayHello"/>
         <input>
@@ -41,12 +40,11 @@
     </operation>
 </binding>
 
-<service name = "Hello_Service">
+<service name="MyServices">
     <documentation>WSDL File for HelloService</documentation>
-    <port binding = "tns:Hello_Binding" name = "Hello_Port">
-        <soap:address
-            location = "http://www.examples.com/SayHello/" />
+    <port binding="tns:Hello_Binding" name = "MyPort">
+        <soap:address location = "http://localhost:8080/wsdl" />
     </port>
 </service>
-</definitions>
+
 </definitions>
