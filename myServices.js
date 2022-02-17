@@ -5,6 +5,12 @@ let myService = {
                 console.log(args)
                 return '1';
             },
+            sayMyName : function(args){ // operation
+                console.log('request parameters >>' ,args)
+                return {
+                   saludo :'Hello ' + args.nombre
+                }
+            },
         }
     }
 }

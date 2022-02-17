@@ -13,10 +13,27 @@
     <part name = "greeting" type = "xsd:string"/>
 </message>
 
+<message name = "sayMyNameRequest">
+    <part name = "nombre" type = "xsd:string"/>
+</message>
+<message name = "sayMyNameResponse">
+    <xsd:element >
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="saludo" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</message>
+
 <portType name = "Hello_PortType">
     <operation name = "sayHello">
         <input message = "tns:SayHelloRequest"/>
         <output message = "tns:SayHelloResponse"/>
+    </operation>
+    <operation name = "sayMyName">
+        <input message = "tns:sayMyNameRequest"/>
+        <output message = "tns:sayMyNameResponse"/>
     </operation>
 </portType>
 
@@ -37,6 +54,11 @@
                 namespace = "urn:examples:helloservice"
                 use = "encoded"/>
         </output>
+    </operation>
+    <operation name = "sayMyName">
+        <soap:operation soapAction = "sayMyName"/>
+        <input> <soap:body use='literal'/> </input>
+        <output> <soap:body use='literal'/> </output>
     </operation>
 </binding>
 
